@@ -1,0 +1,21 @@
+{
+  "name": "js",
+  "homepage": "https://github.com/choww/coffee-run",
+  "authors": [
+    "carmen <carmenn.choww@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.5.4",
+    "jquery": "^3.2.1"
+  }
+}

@@ -11,11 +11,13 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from os.path import abspath, basename, dirname, join, normpath
 import secrets
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = dirname(dirname(abspath(__file__)))
+SITE_ROOT = dirname(BASE_DIR)
+SITE_NAME = basename(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pipeline',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +59,7 @@ ROOT_URLCONF = 'coffeerun.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'coffeerun', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +127,48 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = normpath(join(SITE_ROOT, 'coffee-run/coffeerun/static'))
+STATICFILE_DIRS = [os.path.join(BASE_DIR, 'coffeerun', 'static')]
+
+# Django pipeline & browserify
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+# find files output by django-pipeline
+STATICFILES_FINDERS = (
+  'django.contrib.staticfiles.finders.FileSystemFinder',
+
+  'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+  'pipeline.finders.PipelineFinder'
+)
+
+# specify browserify as compiler to bundle dependencies
+PIPELINE_COMPILERS = (
+  'pipeline_browserify.compiler.BrowserifyCompiler'
+)
+
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
+
+PIPELINE = {
+  'PIPELINE_ENABLED': True,
+  'JAVASCRIPT': {
+    'stats': {
+      'source_filenames': (
+        'coffeerun/static/js/bower_components/jquery/dist/jquery.min.js',
+        'coffeerun/static/js/bower_components/react/react-dom.min.js',
+        'coffeerun/static/js/bower_components/react/react-with-addons.js',
+        'coffeerun/static/js/app.browserify.js'
+      ),
+      'output_filename': 'js/application_js.js'
+    }
+  },
+  'CSS': {
+    'stats': {
+      'source_filenames': ('css/style.css'),
+      'output_filename': 'css/application_css.css'
+    }
+  }
+}
+
+if DEBUG:
+  PIPELINE['BROWSERIFY_ARGS'] = '-t [ babelify --presets [ react ] ]'

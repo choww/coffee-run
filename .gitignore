@@ -1,1 +1,10 @@
+*.db
+*.pyc
+*.swp
+
+build
+coffee-run-env
+tests
+node_modules
+/coffeerun/static/js/bower_components
 /coffeerun/secrets.py

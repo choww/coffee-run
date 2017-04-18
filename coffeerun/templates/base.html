@@ -1,0 +1,15 @@
+{% load pipeline %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% stylesheet 'css/application_css' %}
+  </head>
+  
+  <body>
+    {% block content %}{% endblock %}
+    {% javascript 'js/application_js' %}
+  </body>
+</html>
