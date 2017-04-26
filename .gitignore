@@ -3,7 +3,7 @@
 *.swp
 
 build
-coffee-run-env
+coffee-run-env/
 tests
 node_modules
 /coffeerun/static/js/bower_components
