@@ -1,6 +1,7 @@
-var path = require('path')
-var webpack = require('webpack')
-var BundleTracker = require('webpack-bundle-tracker')
+var path = require('path');
+var webpack = require('webpack');
+var BundleTracker = require('webpack-bundle-tracker');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -15,6 +16,10 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery'
+    }), 
+    new ExtractTextPlugin({
+      filename: 'public/application.css',
+      allChunks: true
     })
   ],
   module: {
@@ -22,12 +27,21 @@ module.exports = {
       { test: /\.jsx?$/, 
         exclude: /node_modules/, 
         loader: 'babel-loader', 
-        query: { presets: ['react'] }
+        query: { presets: ['react', 'es2015'] }
       },
+      { test: /\.(scss|css)$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader', 
+          loader: [
+            { loader: 'css-loader' },
+            { loader: 'sass-loader' }
+          ]
+        }) 
+      }
     ],
   },
   resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.jsx']
+    modules: ['node_modules'],
+    extensions: ['.js', '.jsx']
   },
 }
