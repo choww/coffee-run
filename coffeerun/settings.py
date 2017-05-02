@@ -21,6 +21,9 @@ SECRET_KEY = '213qg0&-e=w%=8w*7b&se*d$%)&d2==(i(gyj+r9xwg$508)h6'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
+
+LOGIN_REDIRECT_URL = '/'
+
 # Application definition
 
 INSTALLED_APPS = [

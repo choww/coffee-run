@@ -1,9 +1,5 @@
 from django.db import models
-
-class User(models.Model):
-  username = models.CharField(max_length=50)
-  email = models.EmailField(max_length=255)
-  signup_date = models.DateTimeField(auto_now_add=True)
+from django.contrib.auth.models import User
 
 class CoffeeShop(models.Model):
   users = models.ManyToManyField(User, through='Visit')
