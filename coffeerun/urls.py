@@ -3,11 +3,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
-from coffeerun.app import views as app_view
+from coffeerun.users import urls as user_urls
 
 urlpatterns = [
   url(r'^admin/', admin.site.urls),
-  url(r'^signup/', app_view.signup, name='signup'),
+  url(r'^', include(user_urls)),
   url(r'^', include('django.contrib.auth.urls')),
   url(r'^$', TemplateView.as_view(template_name='index.html')),
 ] 

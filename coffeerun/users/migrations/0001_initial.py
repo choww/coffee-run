@@ -39,13 +39,13 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('status', models.CharField(max_length=50)),
                 ('date', models.DateTimeField()),
-                ('coffee_shop', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.CoffeeShop')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.User')),
+                ('coffee_shop', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.CoffeeShop')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User')),
             ],
         ),
         migrations.AddField(
             model_name='coffeeshop',
             name='users',
-            field=models.ManyToManyField(through='app.Visit', to='app.User'),
+            field=models.ManyToManyField(through='users.Visit', to='users.User'),
         ),
     ]
