@@ -7,5 +7,5 @@ build
 coffee-run-env/
 tests
 node_modules
-/coffeerun/static/js/bower_components
+/coffeerun/static/debug_toolbar
 /coffeerun/secrets.py
