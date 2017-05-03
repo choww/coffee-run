@@ -21,7 +21,7 @@ SECRET_KEY = '213qg0&-e=w%=8w*7b&se*d$%)&d2==(i(gyj+r9xwg$508)h6'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/dashboard'
 LOGOUT_REDIRECT_URL ='/'
 
 # Application definition
@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'webpack_loader',
-    'coffeerun.app'
+    'coffeerun.users',
+    'coffeerun.coffeeshop'
 ]
 
 MIDDLEWARE = [

@@ -2,9 +2,8 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import login, authenticate
-#from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from coffeerun.app.forms import UserCreateForm
+from coffeerun.users.forms import UserCreateForm
 
 def signup(request):
   if request.method == 'POST':
@@ -19,3 +18,6 @@ def signup(request):
   else:
     form = UserCreateForm()
   return render(request, 'signup.html', {'form': form})
+
+def dashboard(request):
+  return render(request, 'account/dashboard.html')

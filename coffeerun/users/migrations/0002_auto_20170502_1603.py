@@ -10,14 +10,14 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('app', '0001_initial'),
+        ('users', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='coffeeshop',
             name='users',
-            field=models.ManyToManyField(through='app.Visit', to=settings.AUTH_USER_MODEL),
+            field=models.ManyToManyField(through='users.Visit', to=settings.AUTH_USER_MODEL),
         ),
         migrations.AlterField(
             model_name='visit',
