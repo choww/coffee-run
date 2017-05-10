@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="/static/bundles/public/application.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   
@@ -15,6 +16,9 @@
       </div>
       <div class="nav-right">
         {% if user.is_authenticated %}
+          <a class="icon nav-item">
+            <i class="fa fa-user-circle-o"></i>
+          </a>
           <a class="nav-item" href="/logout">Log out</a>
         {% else %}
           <a class="nav-item" href="/signup">Sign up</a> 
