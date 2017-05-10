@@ -18,11 +18,11 @@ class CoffeeShopVisits extends React.Component {
     });
 
     // ADD NEW SHOP VISITS TO BEGINNING OF LIST
-    if (this.props.newShop != '') {
+    if (this.props.newShop != '' && this.props.visitDate != '') {
       visits.unshift(<Visit shopName={this.props.newShop} 
                             neighborhood={this.props.neighborhood} />);
 
-      if (visitDates.indexOf(this.props.visitDate) > -1) {
+      if (visitDates.indexOf(this.props.visitDate) == -1) {
         visits.unshift(<VisitDate date={this.props.visitDate} />); 
         visitDates.push(this.props.visitDate);
       }
