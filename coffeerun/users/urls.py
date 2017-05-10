@@ -3,5 +3,4 @@ from coffeerun.users import views as user_view
 
 urlpatterns = [
   url(r'^signup/', user_view.signup, name='signup'),
-  url(r'^dashboard/', user_view.dashboard, name='dashboard'),
 ]

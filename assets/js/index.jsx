@@ -1,11 +1,12 @@
-require('../css/application.scss');
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Dashboard = require('./dashboard');
 
-var Hello = React.createClass({
-  render: function() {
-    return <h1>Hello world</h1>
-  }
-});
+var shops = [{name: "Platform 7", neighborhood: "East Vancouver", date: "May 4"},
+             {name: "JJ Bean", neighborhood: "East Vancouver", date: "May 9"},
+             {name: "Aer Cafe", neighborhood: "East Vancouver", date: "May 9"}]
 
-ReactDOM.render(<Hello/>, document.getElementById('content'));
+if (document.getElementById('container')) {
+  ReactDOM.render(<Dashboard shops={shops} />, 
+                  document.getElementById('container'));
+}

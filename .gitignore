@@ -10,4 +10,5 @@ node_modules
 /coffeerun/static/debug_toolbar
 /coffeerun/static/bundles
 /coffeerun/secrets.py
+/assets/bundles
 

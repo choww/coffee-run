@@ -22,6 +22,8 @@
         {% endif %}
       </div>
     </nav>
+
+    <h2>{% block header %}{% endblock %}</h2>
     {% block content %}{% endblock %}
     {% render_bundle 'main' 'js' %}
   </body>

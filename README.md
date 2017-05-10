@@ -3,13 +3,13 @@
 An app to keep track of all your coffee shop photos & visits. 
 
 ## Requirements
-Python 2.7
-Django 1.11.0
-React 15.5.4
-PostgreSQL 9.x
-Bulma 0.4.1
-Webpack 2.2.0
-Node 7.9.0
+* Python 2.7
+* Django 1.11.0
+* React 15.5.4
+* PostgreSQL 9.x
+* Bulma 0.4.1
+* Webpack 2.2.0
+* Node 7.9.0
 
 ## Setting up the app
 * In the `coffeerun` directory, create a `secrets.py`
