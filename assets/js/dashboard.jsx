@@ -1,11 +1,12 @@
-var React = require('react');
-var CoffeeShopForm = require('./dashboard/components/coffee_shop_form');
-var CoffeeShopVisits = require('./dashboard/components/coffee_shop_visits');
+import React from 'react';
+import CoffeeShopForm from './dashboard/components/coffee_shop_form';
+import CoffeeShopVisits from './dashboard/components/coffee_shop_visits';
+import moment from 'moment';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {newShop: '', visitDate: '', neighborhood: ''};
+    this.state = {newShop: '', visitDate: moment(), neighborhood: ''};
     this.handleNewShopInput = this.handleNewShopInput.bind(this);
     this.handleNeighborhoodInput = this.handleNeighborhoodInput.bind(this);
     this.handleVisitDateInput = this.handleVisitDateInput.bind(this);
@@ -20,8 +21,8 @@ class Dashboard extends React.Component {
     this.setState({neighborhood: input});
   }
   
-  handleVisitDateInput(input) {
-    this.setState({visitDate: input});
+  handleVisitDateInput(date) {
+    this.setState({visitDate: date});
   }
 
   handleFormComplete() {
@@ -34,9 +35,9 @@ class Dashboard extends React.Component {
           'Content-Type': 'application/json',
           'X-CSRFToken': csrf_token
         },
-        body: { name: this.state.newShop,
+        body: JSON.stringify({ name: this.state.newShop,
                 neighborhood: this.state.neighborhood,
-                visit_date: this.state.visitDate }
+                visit_date: this.state.visitDate })
       });
   }
 

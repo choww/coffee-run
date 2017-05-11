@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render
-from coffeerun.users.forms import UserCreateForm
+from .forms import UserCreateForm
 
 def signup(request):
   if request.method == 'POST':

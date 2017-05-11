@@ -1,4 +1,5 @@
-var React = require('react');
+import React from 'react';
+import DatePicker from 'react-datepicker';
 
 class CoffeeShopForm extends React.Component {
   constructor(props) {
@@ -44,9 +45,8 @@ class CoffeeShopForm extends React.Component {
           </div>
           <div className="column is-3"> 
             <label>Date Visited</label>
-            <input type="text" name="visit_date" 
-                   defaultValue={this.props.visitDate}
-                   onChange={this.handleVisitDateChange} />
+            <DatePicker selected={this.props.visitDate}
+                        onChange={this.handleVisitDateChange} />
           </div>
           <div className="column is-1">
             <button className="button is-primary">Add</button>

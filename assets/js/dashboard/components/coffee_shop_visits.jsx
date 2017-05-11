@@ -1,6 +1,6 @@
-var React = require('react');
-var VisitDate = require('./visit_date.jsx');
-var Visit = require('./visit.jsx');
+import React from 'react';
+import VisitDate from './visit_date';
+import Visit from './visit';
 
 class CoffeeShopVisits extends React.Component {
   render() {
