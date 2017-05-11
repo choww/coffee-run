@@ -9,6 +9,7 @@ class Dashboard extends React.Component {
     this.handleNewShopInput = this.handleNewShopInput.bind(this);
     this.handleNeighborhoodInput = this.handleNeighborhoodInput.bind(this);
     this.handleVisitDateInput = this.handleVisitDateInput.bind(this);
+    this.handleFormComplete = this.handleFormComplete.bind(this);
   }
 
   handleNewShopInput(input) {
@@ -22,6 +23,23 @@ class Dashboard extends React.Component {
   handleVisitDateInput(input) {
     this.setState({visitDate: input});
   }
+
+  handleFormComplete() {
+    var csrf_token = this.props.getCookie('csrftoken');
+    fetch('/dashboard/',
+      { method: 'POST',
+        credentials: 'same-origin',
+        headers: { 
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrf_token
+        },
+        body: { name: this.state.newShop,
+                neighborhood: this.state.neighborhood,
+                visit_date: this.state.visitDate }
+      });
+  }
+
  
   render() {
     return (
@@ -32,7 +50,8 @@ class Dashboard extends React.Component {
                           neighborhood={this.state.neighborhood}
                           handleNewShopInput={this.handleNewShopInput}
                           handleNeighborhoodInput={this.handleNeighborhoodInput}
-                          handleVisitDateInput={this.handleVisitDateInput} />
+                          handleVisitDateInput={this.handleVisitDateInput}
+                          handleFormComplete={this.handleFormComplete} />
         </div>
         <CoffeeShopVisits shops={this.props.shops} 
                           newShop={this.state.newShop}

@@ -22,7 +22,8 @@ class CoffeeShopForm extends React.Component {
   }
 
   handleFormSubmit(e) {
-    // SAVE TO DB 
+    e.preventDefault();
+    this.props.handleFormComplete();
   }
 
   render() {
