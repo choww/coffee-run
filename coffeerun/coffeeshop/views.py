@@ -13,9 +13,11 @@ def dashboard(request):
     coffee_shop = CoffeeShop.objects.create(
       name=params[u'name'].encode('utf-8'),
       neighborhood=params[u'neighborhood'].encode('utf-8') )
+    visit_date = params[u'visit_date']
+    pdb.set_trace()
     Visit.objects.create(user=request.user, 
                          coffee_shop=coffee_shop, 
                          status='visited', 
-                         date='')
+                         date=datetime())
     return HttpResponse( json.dump({'message': 'visit created'}) )
   return render(request, 'dashboard.html')

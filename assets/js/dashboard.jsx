@@ -6,7 +6,9 @@ import moment from 'moment';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {newShop: '', visitDate: moment(), neighborhood: ''};
+    this.state = {newShop: '', 
+                  visitDate: moment(), 
+                  neighborhood: ''};
     this.handleNewShopInput = this.handleNewShopInput.bind(this);
     this.handleNeighborhoodInput = this.handleNeighborhoodInput.bind(this);
     this.handleVisitDateInput = this.handleVisitDateInput.bind(this);

@@ -18,8 +18,8 @@ class CoffeeShopForm extends React.Component {
     this.props.handleNeighborhoodInput(e.target.value);
   }
 
-  handleVisitDateChange(e) {
-    this.props.handleVisitDateInput(e.target.value);
+  handleVisitDateChange(date, e) {
+    this.props.handleVisitDateInput(date);
   }
 
   handleFormSubmit(e) {
