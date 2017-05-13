@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from datetime import datetime
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .models import CoffeeShop, Visit
 from .forms import CoffeeShopForm
@@ -13,11 +14,11 @@ def dashboard(request):
     coffee_shop = CoffeeShop.objects.create(
       name=params[u'name'].encode('utf-8'),
       neighborhood=params[u'neighborhood'].encode('utf-8') )
-    visit_date = params[u'visit_date']
-    pdb.set_trace()
+    date_breakdown = params[u'visit_date'].encode('utf-8').split('-')
+    date = [int(item) for item in date_breakdown]
     Visit.objects.create(user=request.user, 
                          coffee_shop=coffee_shop, 
-                         status='visited', 
-                         date=datetime())
-    return HttpResponse( json.dump({'message': 'visit created'}) )
+                         status='visited',
+                         date=datetime(date[0], date[1], date[2]))
+    return JsonResponse({'message': 'success'})
   return render(request, 'dashboard.html')

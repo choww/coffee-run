@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
         },
         body: JSON.stringify({ name: this.state.newShop,
                 neighborhood: this.state.neighborhood,
-                visit_date: this.state.visitDate })
+                visit_date: this.state.visitDate.format('YYYY-MM-DD') })
       });
   }
 

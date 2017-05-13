@@ -23,7 +23,7 @@ class CoffeeShopVisits extends React.Component {
                             neighborhood={this.props.neighborhood} />);
 
       if (visitDates.indexOf(this.props.visitDate) == -1) {
-        visits.unshift(<VisitDate date={this.props.visitDate.format('YYYY-MM-DD')} />); 
+        visits.unshift(<VisitDate date={this.props.visitDate.format('MMM DD')} />); 
         visitDates.push(this.props.visitDate);
       }
     }
