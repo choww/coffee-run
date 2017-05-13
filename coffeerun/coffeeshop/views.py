@@ -11,13 +11,14 @@ import json, pdb
 def dashboard(request):
   if request.method == 'POST': 
     params = json.loads(request.body)
-    coffee_shop = CoffeeShop.objects.create(
-      name=params[u'name'].encode('utf-8'),
+    shop_name = params[u'name'].encode('utf-8')
+    coffee_shop = CoffeeShop.objects.get_or_create(
+      name=shop_name,
       neighborhood=params[u'neighborhood'].encode('utf-8') )
     date_breakdown = params[u'visit_date'].encode('utf-8').split('-')
     date = [int(item) for item in date_breakdown]
     Visit.objects.create(user=request.user, 
-                         coffee_shop=coffee_shop, 
+                         coffee_shop=coffee_shop[0], 
                          status='visited',
                          date=datetime(date[0], date[1], date[2]))
     return JsonResponse({'message': 'success'})

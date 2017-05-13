@@ -46,7 +46,8 @@ class CoffeeShopForm extends React.Component {
           <div className="column is-3"> 
             <label>Date Visited</label>
             <DatePicker selected={this.props.visitDate}
-                        onChange={this.handleVisitDateChange} />
+                        onChange={this.handleVisitDateChange} 
+                        autoFocus />
           </div>
           <div className="column is-1">
             <button className="button is-primary">Add</button>
