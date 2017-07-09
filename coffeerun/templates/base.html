@@ -29,6 +29,11 @@
 
     <h2>{% block header %}{% endblock %}</h2>
     {% block content %}{% endblock %}
+    <script>
+      window.django = {
+        visits: "{{ request.user.visit_set }}"
+      };  
+    </script>
     {% render_bundle 'main' 'js' %}
   </body>
 </html>

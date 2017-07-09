@@ -8,6 +8,13 @@ from .models import CoffeeShop, Visit
 from .forms import CoffeeShopForm
 import json, pdb
 
+def get_coffee_shops(request):
+  pdb.set_trace()
+  if request.user.is_authenticated():
+    visits = request.user.visit_set.all()
+    response = []
+  return JsonResponse({'message': 'success'})
+
 def dashboard(request):
   if request.method == 'POST': 
     params = json.loads(request.body)

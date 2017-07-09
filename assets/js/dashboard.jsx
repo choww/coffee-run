@@ -42,7 +42,6 @@ class Dashboard extends React.Component {
                 visit_date: this.state.visitDate.format('YYYY-MM-DD') })
       });
   }
-
  
   render() {
     return (
@@ -56,7 +55,7 @@ class Dashboard extends React.Component {
                           handleVisitDateInput={this.handleVisitDateInput}
                           handleFormComplete={this.handleFormComplete} />
         </div>
-        <CoffeeShopVisits shops={this.props.shops} 
+        <CoffeeShopVisits shops={this.props.shops()} 
                           newShop={this.state.newShop}
                           visitDate={this.state.visitDate}
                           neighborhood={this.state.neighborhood} />
